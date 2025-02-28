@@ -1,5 +1,5 @@
 // import { useState } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import ProtectedRoutes from './utils/ProtectedRoutes'
 import Header from './components/Header/Header'
 import Home from './pages/Home/Home'
@@ -14,7 +14,7 @@ import UserSettings from './pages/UserSettings/UserSettings'
 function App() {
 
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
         <Header />
         <div className="content">
@@ -32,7 +32,7 @@ function App() {
           </Routes>
         </div>
       </div>
-    </Router>
+    </BrowserRouter>
   )
 }
 
