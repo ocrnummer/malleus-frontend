@@ -1,7 +1,11 @@
-export const Header = () => {
+const Header = () => {
     return (
         <>
             <div>Header</div>
+            {/* Menyknapp som öppnar sidomeny */}
+            {/* <- Logotyp */}
+            {/* -> Logga in/ut */}
+
         </>
     )
   
