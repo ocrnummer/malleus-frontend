@@ -5,7 +5,7 @@ import Header from './components/Header/Header'
 import Home from './pages/Home/Home'
 import AdDetails from './pages/AdDetails/AdDetails'
 import SearchAds from './pages/SearchAds/SearchAds'
-import Login from './pages/Login/Login'
+import LoginRegister from './pages/LoginRegister/LoginRegister'
 import UserDashboard from './pages/Dashboard/Dashboard'
 import NewAd from './pages/NewAd/NewAd'
 import EditAd from './pages/EditAd/EditAd'
@@ -20,7 +20,7 @@ function App() {
         <div className="content">
           <Routes>
             <Route path="/" element={ <Home /> }/>
-            <Route path="/login" element=  {<Login />}/>
+            <Route path="/login" element=  {<LoginRegister />}/>
             <Route path="/ad/:id" element={ <AdDetails /> }/>
             <Route path="/search" element={ <SearchAds /> }/>
             <Route element={ <ProtectedRoutes />}>
