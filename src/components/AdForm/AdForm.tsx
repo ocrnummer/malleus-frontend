@@ -1,13 +1,14 @@
-import { Dispatch, SetStateAction } from 'react';
+import { useNavigate } from 'react-router-dom';
 import db from '../../appwrite/databases.ts';
-import { AdType } from '../../pages/SearchAds/SearchAds';
+import { AdType } from '../../pages/SearchAds/SearchAds.tsx';
 
-interface NewAdFormProps {
-    setAds: Dispatch<SetStateAction<AdType[]>>;
+interface AdFormProps {
+    adData?: AdType;
 }
 
-const NewAdForm: React.FC<NewAdFormProps> = ({setAds}) => {
-    const handleAdd = async (e: React.SyntheticEvent) => {
+const AdForm: React.FC<AdFormProps> = ({adData}) => {
+    const navigate = useNavigate();
+    const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
         const target = e.target as typeof e.target & {
             title: { value: string};
@@ -19,28 +20,30 @@ const NewAdForm: React.FC<NewAdFormProps> = ({setAds}) => {
                 title: target.title.value, 
                 body: target.body.value
             };
-            const res = await db.ads.create(payload);
-            setAds((prevState: AdType[]): AdType[] => [res, ...prevState])
+            const res = adData?.$id ? await db.ads.update(adData.$id, payload) : await db.ads.create(payload);
+            navigate("/ad/" + res.$id);
         } catch (e) {
             console.error(e)
         }
     }
 
     return (
-        <form onSubmit={ handleAdd }>
+        <form onSubmit={ handleSubmit }>
             <input 
                 type="text" 
                 name="title"
                 placeholder="Title" 
+                defaultValue={adData?.title}
             />
             <input 
                 type="text" 
                 name="body"
                 placeholder="Description" 
+                defaultValue={adData?.body}
             />
             <button type="submit">Add</button>
         </form>
     )
 }
 
-export default NewAdForm
+export default AdForm

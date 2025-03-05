@@ -1,7 +1,10 @@
+import AdForm from "../../components/AdForm/AdForm";
+
 const NewAd = () => {
-    return ( 
+    return (
         <>
-            <div>New ad</div>
+            <h3>New ad</h3>
+            <AdForm />
         </>
      );
 }
