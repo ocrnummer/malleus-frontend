@@ -1,5 +1,7 @@
+import './AdListItem.scss'
 import { AdType } from '../SearchAds'
 import { useNavigate } from 'react-router-dom';
+
 
 interface AdListItemProps {
     adData: AdType
@@ -11,7 +13,7 @@ const AdListItem: React.FC<AdListItemProps> = ({adData}) => {
         navigate("/ad/" + adData.$id)
     }
     return (
-        <div onClick={handleClick}>
+        <div onClick={handleClick} className='ad-list-item'>
             <h3>{adData.title}</h3>
             <p>{adData.body}</p>
         </div>
