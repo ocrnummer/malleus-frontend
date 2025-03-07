@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { AdType } from "../SearchAds/SearchAds";
 import db from "../../appwrite/databases";
 import AdForm from "../../components/AdForm/AdForm";
+import { IAd } from "../../types";
 
 const EditAd = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [ad, setAd] = useState<AdType>();
+    const [ad, setAd] = useState<IAd>();
 
     useEffect(() => {
         init();

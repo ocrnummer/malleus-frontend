@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import db from '../../appwrite/databases.ts';
-import { AdType } from '../../pages/SearchAds/SearchAds.tsx';
+import { IAd } from '../../types/index.ts';
 
 interface AdFormProps {
-    adData?: AdType;
+    adData?: IAd;
 }
 
 const AdForm: React.FC<AdFormProps> = ({adData}) => {

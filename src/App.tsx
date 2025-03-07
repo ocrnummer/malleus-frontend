@@ -10,7 +10,7 @@ import UserDashboard from './pages/Dashboard/Dashboard'
 import NewAd from './pages/NewAd/NewAd'
 import EditAd from './pages/EditAd/EditAd'
 import UserSettings from './pages/UserSettings/UserSettings'
-import AuthProvider from './contexts/AuthContext'
+import AuthProvider from './hooks/AuthContext'
 
 function App() {
 

@@ -1,24 +1,24 @@
 import { Dispatch, SetStateAction } from 'react';
-import { AdType } from '../../../SearchAds/SearchAds';
 import db from '../../../../appwrite/databases';
 import { useNavigate } from 'react-router-dom';
+import { IAd } from '../../../../types';
 
 interface UserAdListItemProps {
-    setAds: Dispatch<SetStateAction<AdType[]>>;
-    adData: AdType
+    setAds: Dispatch<SetStateAction<IAd[]>>;
+    adData: IAd
 }
 
 const UserAdListItem: React.FC<UserAdListItemProps> = ({setAds, adData}) => {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate("/edit/" + adData.$id)
+        navigate("/ad/" + adData.$id)
     }
     
     const handleDelete = async () => {
         
         try {
             await db.ads.delete(adData.$id);
-            setAds((prevState: AdType[]): AdType[] => prevState.filter(ad => ad.$id !== adData.$id))
+            setAds((prevState: IAd[]): IAd[] => prevState.filter(ad => ad.$id !== adData.$id))
         } catch (e) {
             console.error(e)
         }
