@@ -1,30 +1,23 @@
+import './AdListItem.scss'
 import { AdType } from '../SearchAds'
-import db from '../../../appwrite/databases.ts'
-import { Dispatch, SetStateAction } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 interface AdListItemProps {
-    setAds: Dispatch<SetStateAction<AdType[]>>;
     adData: AdType
 }
 
-const AdListItem: React.FC<AdListItemProps> = ({setAds, adData}) => {
-
-    const handleDelete = async () => {
-        try {
-            await db.ads.delete(adData.$id);
-            setAds((prevState: AdType[]): AdType[] => prevState.filter(ad => ad.$id !== adData.$id))
-        } catch (e) {
-            console.error(e)
-        }
+const AdListItem: React.FC<AdListItemProps> = ({adData}) => {
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate("/ad/" + adData.$id)
     }
-
-  return (
-    <div>
-        <h3>{adData.title}</h3>
-        <p>{adData.body}</p>
-        <button onClick={handleDelete}>Delete</button>
-    </div>
-  )
+    return (
+        <div onClick={handleClick} className='ad-list-item'>
+            <h3>{adData.title}</h3>
+            <p>{adData.body}</p>
+        </div>
+    )
 }
 
 export default AdListItem

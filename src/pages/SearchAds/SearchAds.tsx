@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import db from '../../appwrite/databases.ts'
-import NewAdForm from '../../components/NewAdForm/NewAdForm';
 import { Models, Query } from 'appwrite';
 import AdListItem from './AdListItem/AdListItem.tsx';
 
@@ -26,16 +25,15 @@ export const SearchAds = () => {
     return (
         <>
             <h2>SearchAds</h2>
-            <NewAdForm setAds={setAds}/>
+            {/* Sökbox med filter */}
+            {/* Bryt ut lista till egen komponent */}
             <div>
                 {ads.map(
                     (ad: AdType) => (
-                        <AdListItem key={ad.$id} setAds={setAds} adData={ad} />
+                        <AdListItem key={ad.$id} adData={ad} />
                     )
                 )}
             </div>
-            {/* Sökbox med filter */}
-            {/* Lista med resultat */}
         </>
     )
   
