@@ -10,28 +10,31 @@ import UserDashboard from './pages/Dashboard/Dashboard'
 import NewAd from './pages/NewAd/NewAd'
 import EditAd from './pages/EditAd/EditAd'
 import UserSettings from './pages/UserSettings/UserSettings'
+import AuthProvider from './contexts/AuthContext'
 
 function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
-        <Header />
-        <div className="content">
-          <Routes>
-            <Route path="/" element={ <Home /> }/>
-            <Route path="/login" element=  {<LoginRegister />}/>
-            <Route path="/ad/:id" element={ <AdDetails /> }/>
-            <Route path="/search" element={ <SearchAds /> }/>
-            <Route element={ <ProtectedRoutes />}>
-              <Route path="/dashboard" element= {<UserDashboard />} />
-              <Route path="/settings" element= {<UserSettings />} />
-              <Route path="/new" element= {<NewAd />} />
-              <Route path="/edit/:id" element= {<EditAd />} />
-            </Route>
-          </Routes>
+      <AuthProvider>
+        <div className="App">
+          <Header />
+          <div className="content">
+            <Routes>
+              <Route path="/" element={ <Home /> }/>
+              <Route path="/login" element=  {<LoginRegister />}/>
+              <Route path="/ad/:id" element={ <AdDetails /> }/>
+              <Route path="/search" element={ <SearchAds /> }/>
+              <Route element={ <ProtectedRoutes />}>
+                <Route path="/dashboard" element= {<UserDashboard />} />
+                <Route path="/settings" element= {<UserSettings />} />
+                <Route path="/new" element= {<NewAd />} />
+                <Route path="/edit/:id" element= {<EditAd />} />
+              </Route>
+            </Routes>
+          </div>
         </div>
-      </div>
+      </AuthProvider>
     </BrowserRouter>
   )
 }
