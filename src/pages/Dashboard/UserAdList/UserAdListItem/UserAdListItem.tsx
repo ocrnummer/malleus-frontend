@@ -15,6 +15,7 @@ const UserAdListItem: React.FC<UserAdListItemProps> = ({setAds, adData}) => {
     }
     
     const handleDelete = async () => {
+        
         try {
             await db.ads.delete(adData.$id);
             setAds((prevState: AdType[]): AdType[] => prevState.filter(ad => ad.$id !== adData.$id))
