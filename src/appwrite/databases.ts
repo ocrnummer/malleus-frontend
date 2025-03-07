@@ -1,4 +1,4 @@
-import { AdType } from "../pages/SearchAds/SearchAds.tsx";
+import { IAd } from "../types/index.ts";
 import { databases } from "./config.ts";
 import { ID, Models } from "appwrite";
 
@@ -7,11 +7,12 @@ type AdPayload = {
     body: string,
 }
 
+// TODO: Make this more generic for future collections
 type Collection = {
-    get: (id: string) => Promise<AdType>;
-    list: (queries?: string[]) => Promise<Models.DocumentList<AdType>>;
-    create: (payload: AdPayload, permissions?: string[], id?: string) => Promise<AdType>;
-    update: (id: string, payload: AdPayload, permissions?: string []) => Promise<AdType>;
+    get: (id: string) => Promise<IAd>;
+    list: (queries?: string[]) => Promise<Models.DocumentList<IAd>>;
+    create: (payload: AdPayload, permissions?: string[], id?: string) => Promise<IAd>;
+    update: (id: string, payload: AdPayload, permissions?: string []) => Promise<IAd>;
     delete: (id: string) => Promise<object>;
 }
 

@@ -1,4 +1,4 @@
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../hooks/AuthContext";
 
 const Header = () => {
     const auth = useAuth();

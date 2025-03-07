@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
-import { AdType } from "../SearchAds/SearchAds";
 import db from "../../appwrite/databases";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../hooks/AuthContext";
+import { IAd } from "../../types";
 
 const AdDetails = () => {
     const { id } = useParams();
-    const [ad, setAd] = useState<AdType>();
+    const [ad, setAd] = useState<IAd>();
     const auth = useAuth();
     const navigate = useNavigate();
 

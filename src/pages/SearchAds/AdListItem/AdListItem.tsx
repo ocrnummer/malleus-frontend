@@ -1,10 +1,10 @@
+import { IAd } from '../../../types';
 import './AdListItem.scss'
-import { AdType } from '../SearchAds'
 import { useNavigate } from 'react-router-dom';
 
 
 interface AdListItemProps {
-    adData: AdType
+    adData: IAd
 }
 
 const AdListItem: React.FC<AdListItemProps> = ({adData}) => {

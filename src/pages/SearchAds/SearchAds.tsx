@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
 import db from '../../appwrite/databases.ts'
-import { Models, Query } from 'appwrite';
+import { Query } from 'appwrite';
 import AdListItem from './AdListItem/AdListItem.tsx';
-
-export interface AdType extends Models.Document {
-    title: string,
-    body: string
-}
+import { IAd } from '../../types/index.ts';
 
 export const SearchAds = () => {
-    const [ads, setAds] = useState<AdType[]>([])
+    const [ads, setAds] = useState<IAd[]>([])
 
     useEffect(() => {
         init();
@@ -29,7 +25,7 @@ export const SearchAds = () => {
             {/* Bryt ut lista till egen komponent */}
             <div>
                 {ads.map(
-                    (ad: AdType) => (
+                    (ad: IAd) => (
                         <AdListItem key={ad.$id} adData={ad} />
                     )
                 )}
