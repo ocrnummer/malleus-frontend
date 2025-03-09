@@ -1,0 +1,112 @@
+{
+    "projectId": "67c238ba00097e002b42",
+    "projectName": "malleus",
+    "settings": {
+        "services": {
+            "account": true,
+            "avatars": true,
+            "databases": true,
+            "locale": true,
+            "health": true,
+            "storage": true,
+            "teams": true,
+            "users": true,
+            "functions": true,
+            "graphql": true,
+            "messaging": true
+        },
+        "auth": {
+            "methods": {
+                "jwt": true,
+                "phone": true,
+                "invites": true,
+                "anonymous": true,
+                "email-otp": true,
+                "magic-url": true,
+                "email-password": true
+            },
+            "security": {
+                "duration": 31536000,
+                "limit": 0,
+                "sessionsLimit": 10,
+                "passwordHistory": 0,
+                "passwordDictionary": false,
+                "personalDataCheck": false,
+                "sessionAlerts": false,
+                "mockNumbers": []
+            }
+        }
+    },
+    "functions": [
+        {
+            "$id": "67cd82f7001d58495f6f",
+            "execute": [
+                "any"
+            ],
+            "name": "create-user",
+            "enabled": true,
+            "logging": true,
+            "runtime": "bun-1.1",
+            "scopes": [
+                "users.read"
+            ],
+            "events": [
+                "users.*.create"
+            ],
+            "schedule": "",
+            "timeout": 15,
+            "entrypoint": "src/main.ts",
+            "commands": "bun install",
+            "specification": "s-0.5vcpu-512mb",
+            "path": "functions/create-user"
+        }
+    ],
+    "databases": [
+        {
+            "$id": "67c23b40001dd79f15ce",
+            "name": "dev",
+            "enabled": true
+        }
+    ],
+    "collections": [
+        {
+            "$id": "67c23d46002ef23ea7a5",
+            "$permissions": [
+                "create(\"any\")",
+                "read(\"any\")",
+                "update(\"any\")",
+                "delete(\"any\")"
+            ],
+            "databaseId": "67c23b40001dd79f15ce",
+            "name": "ads",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "title",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 200,
+                    "default": null
+                },
+                {
+                    "key": "body",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 1000,
+                    "default": null
+                },
+                {
+                    "key": "limited",
+                    "type": "boolean",
+                    "required": false,
+                    "array": false,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        }
+    ]
+}
