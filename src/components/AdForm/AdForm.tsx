@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import db from '../../appwrite/databases.ts';
 import { IAd } from '../../types/index.ts';
+import { NAV_AD_URL } from '../../utils/SharedConts.tsx';
+import db from '../../services/DatabasesService.ts';
 
 interface AdFormProps {
     adData?: IAd;
@@ -21,7 +22,7 @@ const AdForm: React.FC<AdFormProps> = ({adData}) => {
                 body: target.body.value
             };
             const res = adData?.$id ? await db.ads.update(adData.$id, payload) : await db.ads.create(payload);
-            navigate("/ad/" + res.$id);
+            navigate(NAV_AD_URL + res.$id);
         } catch (e) {
             console.error(e)
         }
