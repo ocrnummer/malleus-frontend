@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import db from '../../appwrite/databases.ts'
 import { Query } from 'appwrite';
 import AdListItem from './AdListItem/AdListItem.tsx';
 import { IAd } from '../../types/index.ts';
+import db from '../../services/DatabasesService.ts';
 
 export const SearchAds = () => {
     const [ads, setAds] = useState<IAd[]>([])

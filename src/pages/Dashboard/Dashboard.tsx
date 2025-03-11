@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import UserAdList from "./UserAdList/UserAdList";
+import { NAV_NEW_URL } from "../../utils/SharedConts";
 
 const UserDashboard = () => {
     const navigate = useNavigate();
     const handleClick = () => { 
-        navigate("/new")
+        navigate(NAV_NEW_URL)
     }
     
     return ( 

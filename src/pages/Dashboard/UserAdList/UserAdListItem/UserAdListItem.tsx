@@ -1,7 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
-import db from '../../../../appwrite/databases';
 import { useNavigate } from 'react-router-dom';
 import { IAd } from '../../../../types';
+import { NAV_AD_URL } from '../../../../utils/SharedConts';
+import db from '../../../../services/DatabasesService';
 
 interface UserAdListItemProps {
     setAds: Dispatch<SetStateAction<IAd[]>>;
@@ -11,7 +12,7 @@ interface UserAdListItemProps {
 const UserAdListItem: React.FC<UserAdListItemProps> = ({setAds, adData}) => {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate("/ad/" + adData.$id)
+        navigate(NAV_AD_URL + adData.$id)
     }
     
     const handleDelete = async () => {

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
-import db from "../../appwrite/databases";
-import { useAuth } from "../../hooks/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 import { IAd } from "../../types";
+import { NAV_EDIT_URL } from "../../utils/SharedConts";
+import db from "../../services/DatabasesService";
 
 const AdDetails = () => {
     const { id } = useParams();
@@ -23,14 +24,14 @@ const AdDetails = () => {
     }   
 
     const handleClick = () => {
-        navigate("/edit/" + ad?.$id)
+        navigate(NAV_EDIT_URL + ad?.$id)
     }
 
     return (
         <>
             <h2>{ad?.title}</h2>
             <p>{ad?.body}</p>
-            {auth.user && <button onClick={handleClick} >Edit</button>}
+            {auth.currentUser && <button onClick={handleClick} >Edit</button>}
             {/* Bild */}
             {/* Title */}
             {/* pris */}

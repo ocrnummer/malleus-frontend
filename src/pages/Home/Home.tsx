@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { HomeSearchBox } from "./components/HomeSearchBox/HomeSearchBox"
+import { NAV_SEARCH_URL } from "../../utils/SharedConts"
 
 
 
@@ -8,7 +9,7 @@ const Home = () => {
         <>
             <h1>Home</h1>
             <HomeSearchBox />
-            <Link to="/search">Search</Link>
+            <Link to={NAV_SEARCH_URL}>Search</Link>
         </>
     )
   

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import db from "../../appwrite/databases";
 import AdForm from "../../components/AdForm/AdForm";
 import { IAd } from "../../types";
+import db from "../../services/DatabasesService";
 
 const EditAd = () => {
     const { id } = useParams();
